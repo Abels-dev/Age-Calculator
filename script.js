@@ -72,6 +72,14 @@ function error() {
          isError = true;
       }
    }
+   else if(Number(inputs[1].value)==2){
+      if(Number(inputs[0].value)>28){
+         inputs[0].style.borderColor="hsl(0, 100%, 67%)";
+         label[0].classList.add("error");
+         errorMsg[0].textContent = "Must be valid day";
+         isError = true;
+      }
+   }
 }
 function showResult() {
    if (!isError) {
