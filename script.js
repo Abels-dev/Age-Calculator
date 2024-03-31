@@ -1,66 +1,66 @@
-const inputDay = document.getElementById("dayInput");
-const inputMonth = document.getElementById("monthInput");
-const inputYear = document.getElementById("yearInput");
 const display = document.querySelectorAll(".Display");
-const errorMsg = document.querySelectorAll(".error");
+const errorMsg = document.querySelectorAll(".errorMsg");
+const label=document.querySelectorAll(".label");
+const inputs=document.querySelectorAll(".input")
 const form = document.getElementById("form");
 
 const date = new Date();
 const currentDate = date.getDate();
 const currentMonth = date.getMonth() + 1;
 const currentYear = date.getFullYear();
-let isError = false;
+let isError;
 let year;
 let month;
 let day;
 
 function ageCalculator() {
    isError = false;
+   label.forEach(lables=>lables.classList.remove("error"))
+   inputs.forEach(input=>input.style.borderColor="hsl(0, 0%, 86%)")
    errorMsg.forEach((value) => (value.textContent = ""));
-   if (currentYear >= Number(inputYear.value))
-      year = currentYear - Number(inputYear.value);
+   if (currentYear >= Number(inputs[2].value))
+      year = currentYear - Number(inputs[2].value);
 
-   if (Number(inputDay.value) < currentDate)
-      day = currentDate - Number(inputDay.value);
+   if (Number(inputs[0].value) < currentDate)
+      day = currentDate - Number(inputs[0].value);
    else {
-      day = 30 - Number(inputDay.value) + currentDate;
+      day = 30 - Number(inputs[0].value) + currentDate;
       month--;
    }
-   if (Number(inputMonth.value) <= currentMonth)
-      month = currentMonth - Number(inputMonth.value);
+   if (Number(inputs[1].value) <= currentMonth)
+      month = currentMonth - Number(inputs[1].value);
    else {
-      month = 12 - Number(inputMonth.value) + currentMonth;
+      month = 12 - Number(inputs[1].value) + currentMonth;
       year--;
    }
 }
 function error() {
-   if (Number(inputYear.value) > currentYear) {
+   if (Number(inputs[2].value) > currentYear) {
+      inputs[2].style.borderColor="hsl(0, 100%, 67%)";
+      label[2].classList.add("error");
       errorMsg[2].textContent = "Must be in past";
       isError = true;
    }
-   if (Number(inputMonth.value) > 12) {
-      errorMsg[1].textContent = "Must be Valid Month";
+   if (Number(inputs[1].value) > 12) {
+      inputs[1].style.borderColor="hsl(0, 100%, 67%)";
+      label[1].classList.add("error");
+      errorMsg[1].textContent = "Must be valid month";
       isError = true;
    }
-
-   if (Number(inputDay.value) > 30) {
-      errorMsg[0].textContent = "Must be Valid Date";
+   if (Number(inputs[0].value) > 30) {
+      inputs[0].style.borderColor="hsl(0, 100%, 67%)";
+      label[0].classList.add("error");
+      errorMsg[0].textContent = "Must be valid day";
       isError = true;
    }
-
-   if (inputDay.value == "") {
-      errorMsg[0].textContent = "This Field is required";
-      isError = true;
-   }
-   if (inputMonth.value == "") {
-      errorMsg[1].textContent = "This Field is required";
-
-      isError = true;
-   }
-   if (inputYear.value == "") {
-      errorMsg[2].textContent = "This Field is required";
-      isError = true;
-   }
+   inputs.forEach((input,index)=>{
+      if(input.value==''){
+         input.style.borderColor="hsl(0, 100%, 67%)";
+         label[index].classList.add("error");
+         errorMsg[index].textContent = "This field is required";
+         isError = true;
+      }
+   })
 }
 function showResult() {
    if (!isError) {
