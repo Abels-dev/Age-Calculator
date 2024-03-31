@@ -50,17 +50,38 @@ button{
      outline: 0;
      background-color: var(--Purple);
 }
+button:hover{
+    background-color: var(--Off-black);
+}
 button img{
     width: 30px;
+}
+label{
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--Smokey-grey);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+.error{
+    color: var(--Light-red);
 }
 input{
     width: 110px;
     padding: 0.5rem;
+    padding-left: 1rem;
     font-size: 30px;
     font-weight: 700;
     border: 1px solid var(--Light-grey);
     border-radius: 10px;
     outline: 0;
+}
+input::placeholder{
+    color: var(--Smokey-grey);
+    font-size: 24px;
+}
+input:focus{
+    border: 2px solid var(--Smokey-grey);
 }
 .container{
     position: relative;
@@ -71,10 +92,16 @@ input{
     margin-bottom: 30px;
     border-bottom: 1px solid var(--Light-grey);
 }
+.container p{
+    color: var(--Light-red);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.9rem;
+}
 .container div{
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 5px;
     margin-bottom: 10px;
 }
 h1{
