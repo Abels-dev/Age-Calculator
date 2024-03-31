@@ -12,7 +12,7 @@
          href="./assets/images/favicon-32x32.png" />
        <link rel="stylesheet" href="style.css">
       <title>Frontend Mentor | Age calculator app</title>
-
+      <script src="script.js" defer></script>
       <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
       <style>
          .attribution {
@@ -26,21 +26,21 @@
    </head>
    <body>
       <main>
-        <form action="">
+        <form action="" id="form">
           <div class="container">
              <div>
                 <p>Day</p>
-                <input type="text" placeholder="DD" />
+                <input type="text" placeholder="DD" id="dayInput" />
                 <p class="error"></p>
              </div>
              <div>
                 <p>Months</p>
-                <input type="text" placeholder="MM" />
+                <input type="text" placeholder="MM" id="monthInput" />
                 <p class="error"></p>
              </div>
              <div>
                 <p>Year</p>
-                <input type="text" placeholder="YYYY" />
+                <input type="text" placeholder="YYYY" id="yearInput" />
                 <p class="error"></p>
              </div>
              <button><img src="assets/images/icon-arrow.svg" alt=""></button>
@@ -48,9 +48,9 @@
        </form>
        
        <section class="showdate">
-          <h1><span>--</span> years</h1>
-          <h1><span>--</span> months</h1>
-          <h1><span>--</span> days</h1>
+          <h1><span id="showYear" class="Display">--</span> years</h1>
+          <h1><span id="showMonth" class="Display">--</span> months</h1>
+          <h1><span id="showDay" class="Display">--</span> days</h1>
        </section>
  
       </main>
