@@ -24,7 +24,10 @@ function ageCalculator() {
    if (Number(inputs[0].value) < currentDate)
       day = currentDate - Number(inputs[0].value);
    else {
-      day = 30 - Number(inputs[0].value) + currentDate;
+      if(Number(inputs[1].value)==4||Number(inputs[1].value)==6||Number(inputs[1].value)==9||Number(inputs[1].value)==11)
+          day=30-Number(inputs[0].value)+currentDate;
+
+      day = 31 - Number(inputs[0].value) + currentDate;
       month--;
    }
    if (Number(inputs[1].value) <= currentMonth)
@@ -35,19 +38,19 @@ function ageCalculator() {
    }
 }
 function error() {
-   if (Number(inputs[2].value) > currentYear) {
+   if ((Number(inputs[2].value) > currentYear)||(Number(inputs[2].value)<0)) {
       inputs[2].style.borderColor="hsl(0, 100%, 67%)";
       label[2].classList.add("error");
       errorMsg[2].textContent = "Must be in past";
       isError = true;
    }
-   if (Number(inputs[1].value) > 12) {
+   if ((Number(inputs[1].value) > 12)||(Number(inputs[1].value)<0)) {
       inputs[1].style.borderColor="hsl(0, 100%, 67%)";
       label[1].classList.add("error");
       errorMsg[1].textContent = "Must be valid month";
       isError = true;
    }
-   if (Number(inputs[0].value) > 30) {
+   if ((Number(inputs[0].value) > 31)||(Number(inputs[0].value)<0)) {
       inputs[0].style.borderColor="hsl(0, 100%, 67%)";
       label[0].classList.add("error");
       errorMsg[0].textContent = "Must be valid day";
@@ -61,6 +64,14 @@ function error() {
          isError = true;
       }
    })
+   if(Number(inputs[1].value)==4||Number(inputs[1].value)==6||Number(inputs[1].value)==9||Number(inputs[1].value)==11){
+      if(Number(inputs[0].value)>30){
+         inputs[0].style.borderColor="hsl(0, 100%, 67%)";
+         label[0].classList.add("error");
+         errorMsg[0].textContent = "Must be valid day";
+         isError = true;
+      }
+   }
 }
 function showResult() {
    if (!isError) {
