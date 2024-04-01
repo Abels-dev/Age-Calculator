@@ -67,7 +67,7 @@ label{
     color: var(--Light-red);
 }
 input{
-    width: 110px;
+    width: 120px;
     padding: 0.5rem;
     padding-left: 1rem;
     font-size: 30px;
@@ -96,7 +96,7 @@ input:focus{
     color: var(--Light-red);
     font-weight: 400;
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 .container div{
     display: flex;
